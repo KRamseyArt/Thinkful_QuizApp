@@ -20,9 +20,13 @@ form {
     border-color: lightgray;
 }
 
-#answer-choices {
-    text-align: left;
-    
+#answer-choices p{
+    box-sizing: content-box;
+    width: 100px;
+}
+#answer-choices p:hover{
+    background: gray;
+    border-radius: 5px;
 }
 
 #right{
@@ -30,10 +34,19 @@ form {
     border-radius: 5px;
     background: rgba(0,255,0,0.3);
 }
+#answer-choices #right:hover{
+    background: green;
+    color: white;
+}
 #wrong {
     border: 2px solid red;
     border-radius: 5px;
     background: rgba(255, 0,0,0.3);
+}
+
+#answer-choices #wrong:hover{
+    background: red;
+    color: white;
 }
 
 .score {
