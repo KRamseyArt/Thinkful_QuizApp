@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Egyptian Deities Quiz</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="" href="css/style.css">
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <section id="intro">
+            <header>
+                <h1>Egyptian Deities Quiz</h1>
+                <p><em>Test your knowledge of ancient Egyptian Gods!</em></p>
+                <br>
+                <a href="#quiz"><button id="start-button">Start Quiz</button></a>
+            </header>
+        </section>
+
+
+
+        <section id="quiz">
+            <header>
+                <img class="header-img" src="https://via.placeholder.com/1920x1080/555?text=Placeholder+Image">
+                <h1>Egyptian Deities Quiz</h1>
+                <p><em>Test your knowledge of ancient Egyptian Gods!</em></p>
+            </header>
+            <form>
+                <fieldset id="question">
+                    <legend><h2>Question 1 / 10</h2></legend>
+
+                    <img class="q-img" src="https://via.placeholder.com/300x150/777?text=Placeholder">
+                    <p class="question">Which protective goddess of cats was often depicted on amulets for good luck?</p>
+                    
+                    <section class="answer-choices">
+                        <input type="radio" name="answer" value="0">
+                        <label class="label-0">Bastet</label><br>
+
+                        <input type="radio" name="answer" value="1">
+                        <label class="label-1">Babi</label><br>
+                        
+                        <input type="radio" name="answer" value="2">
+                        <label class="label-2">Tawaret</label><br>
+                        
+                        <input type="radio" name="answer" value="3">
+                        <label class="label-3">Serkhet</label>
+                    </section>
+                </fieldset>
+            </form>
+            <a href="#feedback"><button id="submit-button">Check Answer</button></a>
+            <section class="score">
+                <h2>Score:</h2>
+                <p><span>2 right</span> . . . <span>2 wrong</span></p>
+                <table>
+                    <tr>
+                        <td class="score-correct"></td>
+                        <td class="score-incorrect"></td>
+                        <td class="score-correct"></td>
+                        <td class="score-incorrect"></td>
+                        <td class="score-unknown"></td>
+                        <td class="score-unknown"></td>
+                        <td class="score-unknown"></td>
+                        <td class="score-unknown"></td>
+                        <td class="score-unknown"></td>
+                        <td class="score-unknown"></td>
+                    </tr>
+                </table>
+            </section>
+        </section>
+
+        <section id="feedback">
+            <header>
+                <img class="header-img" src="https://via.placeholder.com/500x500/555?text=Placeholder+Image">
+                <h1>CORRECT / INCORRECT</h1>
+                <p><em>The answer is (...)</em></p>
+            </header>
+            <section class="score">
+                <h2>Score:</h2>
+                <p><span>2 right</span> . . . <span>2 wrong</span></p>
+                <table>
+                    <tr>
+                        <td class="score-correct"></td>
+                        <td class="score-incorrect"></td>
+                        <td class="score-correct"></td>
+                        <td class="score-incorrect"></td>
+                        <td class="score-unknown"></td>
+                        <td class="score-unknown"></td>
+                        <td class="score-unknown"></td>
+                        <td class="score-unknown"></td>
+                        <td class="score-unknown"></td>
+                        <td class="score-unknown"></td>
+                    </tr>
+                </table>
+            </section>
+            <br>
+            <a href="#quiz"><button id="next-button">Next Question</button></a>
+            <br>
+            <a href="#results"><button id="next-button">Submit</button></a>
+        </section>
+
+        <section id="results">
+            <header>
+                <h3>You Answered 5/10 Questions Correctly!</h3>
+                <div id="result-img"></div>
+                <h1>50%</h1>
+                <p><em>You did great! You could do better! Try again!</em></p>
+                <br>
+                <a href="#intro"><button id="next-button">Try Again!</button></a>
+            </header>
+            
+        </section>
+
+        <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
+        <!--<script src="index.js" async defer></script>-->
+    </body>
+</html>
