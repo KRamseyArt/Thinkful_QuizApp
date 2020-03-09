@@ -1,16 +1,10 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<html lang="en">
     <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>Egyptian Deities Quiz</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" type="" href="css/style.css">
     </head>
+
     <body>
         <!--INTRO PAGE-->
         <section id="intro">
@@ -18,54 +12,63 @@
                 <h1>Egyptian Deities Quiz</h1>
                 <p><em>Test your knowledge of ancient Egyptian Gods!</em></p>
                 <br>
+                <!-- Starting screen should have a button that users can click to start the quiz-->
                 <a href="#quiz"><button id="start-button">Start Quiz</button></a>
             </header>
         </section>
         <!--QUIZ PAGE-->
         <section id="quiz">
             <header>
-                <img class="header-img" src="https://via.placeholder.com/1920x1080/555?text=Placeholder+Image">
+                <img class="header-img" src="https://i.redd.it/6z62cq3f3tm31.jpg">
                 <h1>Egyptian Deities Quiz</h1>
                 <p><em>Test your knowledge of ancient Egyptian Gods!</em></p>
             </header>
+            <!--Users should be prompted through a series of at least 5 multiple choice questions that they can answer
+                            - should be asked questions 1 after the other
+                            - should only be prompted with 1 question at a time -->
             <form>
-                <fieldset id="question">
+                <fieldset>
+                    <!--Users should be able to see which question they're on [7 out of 10]-->
                     <legend><h2>Question 1 / 10</h2></legend>
 
-                    <img class="q-img" src="https://via.placeholder.com/300x150/777?text=Placeholder">
-                    <p class="question">Which protective goddess of cats was often depicted on amulets for good luck?</p>
+                    <img class="q-img">
+                    <p id="question">Which protective goddess of cats was often depicted on amulets for good luck?</p>
                     
                     <section class="answer-choices">
-                        <input type="radio" name="answer" value="0">
-                        <label class="label-0">Bastet</label><br>
+                        <input type="radio" name="answer" id="answer-0" value="0">
+                        <label for="answer-0" id="label-0">0</label><br>
 
-                        <input type="radio" name="answer" value="1">
-                        <label class="label-1">Babi</label><br>
+                        <input type="radio" name="answer" id="answer-1" value="1">
+                        <label for="answer-1" id="label-1">1</label><br>
                         
-                        <input type="radio" name="answer" value="2">
-                        <label class="label-2">Tawaret</label><br>
+                        <input type="radio" name="answer" id="answer-2" value="2">
+                        <label for="answer-2" id="label-2">2</label><br>
                         
-                        <input type="radio" name="answer" value="3">
-                        <label class="label-3">Serkhet</label>
+                        <input type="radio" name="answer" id="answer-3" value="3">
+                        <label for="answer-3" id="label-3">3</label>
                     </section>
                 </fieldset>
+                <br>
+                <!--Users should not be able to skip questions-->
+                <a href="#feedback"><input type="submit" id="submit-button" value="Check Answer"></input></a>
             </form>
-            <a href="#feedback"><button id="submit-button">Check Answer</button></a>
+            
+            <!--Users should be able to see their current score [5 correct, 2 incorrect]-->
             <section class="score">
                 <h2>Score:</h2>
                 <p><span>2 right</span> . . . <span>2 wrong</span></p>
                 <table>
                     <tr>
-                        <td class="score-correct"></td>
-                        <td class="score-incorrect"></td>
-                        <td class="score-correct"></td>
-                        <td class="score-incorrect"></td>
-                        <td class="score-unknown"></td>
-                        <td class="score-unknown"></td>
-                        <td class="score-unknown"></td>
-                        <td class="score-unknown"></td>
-                        <td class="score-unknown"></td>
-                        <td class="score-unknown"></td>
+                        <td class="score-0 score-unknown"></td>
+                        <td class="score-1 score-unknown"></td>
+                        <td class="score-2 score-unknown"></td>
+                        <td class="score-3 score-unknown"></td>
+                        <td class="score-4 score-unknown"></td>
+                        <td class="score-5 score-unknown"></td>
+                        <td class="score-6 score-unknown"></td>
+                        <td class="score-7 score-unknown"></td>
+                        <td class="score-8 score-unknown"></td>
+                        <td class="score-9 score-unknown"></td>
                     </tr>
                 </table>
             </section>
@@ -74,42 +77,50 @@
         <section id="feedback">
             <header>
                 <img class="header-img" src="https://via.placeholder.com/500x500/555?text=Placeholder+Image">
+                <!--Upon submitting an answer, users should:
+                        - receive textual feedback about their answer. If they were incorrect, they should be told the correct answer
+                        - Be moved onto the next question [or interact with an element to move on]-->
                 <h1>CORRECT / INCORRECT</h1>
                 <p><em>The answer is (...)</em></p>
+                <br>
+                <a href="#quiz"><button id="next-button">Next Question</button></a>
+            
             </header>
             <section class="score">
                 <h2>Score:</h2>
                 <p><span>2 right</span> . . . <span>2 wrong</span></p>
                 <table>
                     <tr>
-                        <td class="score-correct"></td>
-                        <td class="score-incorrect"></td>
-                        <td class="score-correct"></td>
-                        <td class="score-incorrect"></td>
-                        <td class="score-unknown"></td>
-                        <td class="score-unknown"></td>
-                        <td class="score-unknown"></td>
-                        <td class="score-unknown"></td>
-                        <td class="score-unknown"></td>
-                        <td class="score-unknown"></td>
+                        <td class="score-0 score-unknown"></td>
+                        <td class="score-1 score-unknown"></td>
+                        <td class="score-2 score-unknown"></td>
+                        <td class="score-3 score-unknown"></td>
+                        <td class="score-4 score-unknown"></td>
+                        <td class="score-5 score-unknown"></td>
+                        <td class="score-6 score-unknown"></td>
+                        <td class="score-7 score-unknown"></td>
+                        <td class="score-8 score-unknown"></td>
+                        <td class="score-9 score-unknown"></td>
                     </tr>
                 </table>
             </section>
-            <br>
-            <a href="#quiz"><button id="next-button">Next Question</button></a>
-            <br>
-            <a href="#results"><button id="next-button">Submit</button></a>
+            
         </section>
         <!--RESULTS PAGE-->
         <section id="results">
             <header>
+                <!--Users should be shown their overall score at the end of the quiz [how many questions they got right out of the total questions asked]-->
                 <h3>You Answered 5/10 Questions Correctly!</h3>
                 <div id="result-img"></div>
                 <h1>50%</h1>
-                <p><em>You did great! You could do better! Try again!</em></p>
+                <p><em></em></p>
                 <br>
-                <a href="#intro"><button id="next-button">Try Again!</button></a>
+                <!--Users should be able to start a new quiz-->
+                <a href="#intro"><button id="retry-button">Try Again!</button></a>
             </header>
         </section>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="js/index.js"></script>
     </body>
 </html>

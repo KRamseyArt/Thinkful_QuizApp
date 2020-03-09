@@ -6,7 +6,7 @@
 /*----MAIN PAGE----*/
 #intro{
     /* display: none; */
-    background-image: url("https://via.placeholder.com/1920x1080/777?text=Placeholder");
+    background-image: url("https://i.redd.it/6z62cq3f3tm31.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -19,14 +19,30 @@
     position: absolute;
     width: 480px;
     height: 120px;
-    background: white;
+    background-image: linear-gradient(to left, rgb(107, 26, 15), rgb(160, 50, 31), rgb(107, 26, 15));
     border-radius: 10px;
-    border-color: lightgray;
+    border: 3px solid rgb(255, 255, 255);
+    color: lightgray;
     padding: 10px;
     top: 50%;
     margin-top: -60px;
     left: 50%;
     margin-left: -240px;
+    box-shadow:
+        5px 10px 5px rgba(0, 0, 0, 0.75),
+        -5px 10px 5px rgba(0, 0, 0, 0.75);
+}
+#intro h1{
+    color: rgb(233, 196, 30);
+}
+#start-button{
+    background-color: rgb(233, 196, 30);
+    border: 0px;
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+#start-button:hover{
+    background-color: rgb(243, 139, 20);
 }
 
 /*----QUIZ PAGE----*/
@@ -34,30 +50,54 @@
     /* display: none; */
     height: 100vh;
     position: relative;
+    background-image: linear-gradient(to bottom, black, rgb(107, 26, 15));
 }
 
 #quiz header{
-    background: lightgray;
+    background-image: linear-gradient(to left, rgb(107, 26, 15), rgb(160, 50, 31), rgb(107, 26, 15));
+    color: lightgray;
     padding: 0 0 10px 0;
+}
+#quiz header h1{
+    color: rgb(233, 196, 30);
+}
+.q-img{
+    max-height: 250px;
 }
 .header-img{
     margin-top: 0;
-    background-size: cover;
-    max-height: 250px;
+    min-height: 100px;
+    max-height: 150px;
     width: 100%;
+    object-fit: cover;
 }
 form {
     max-width: 760px;
     margin-bottom: 20px;
+    
 }
 fieldset{
     background-image: linear-gradient(to top, rgb(207, 207, 207), white);
     border-radius: 10px;
-    border-color: lightgray;
+    border-color: rgb(233, 196, 30);
+    margin-top: 20px;
+    box-shadow:
+        5px 10px 5px rgba(0, 0, 0, 0.75),
+        -5px 10px 5px rgba(0, 0, 0, 0.75);
+}
+form fieldset h2{
+    background-color: rgb(233, 196, 30);
+    padding: 5px 10px;
+    border-radius: 20px;
+    margin-left: 0;
+    margin-right: 0;
 }
 #question p{
     margin-left: 60px;
     margin-right: 60px;
+}
+.answer-choices{
+    margin-top: 20px;
 }
 
 .answer-choices label{
@@ -68,18 +108,28 @@ fieldset{
     background: gray;
     border-radius: 5px;
 }
+
+#submit-button{
+    background-color: rgb(233, 196, 30);
+    border: 0px;
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+#submit-button:hover{
+    background-color: rgb(243, 139, 20);
+}
+
 .score {
     position: absolute;
     bottom: 0px;
     width: 100%;
-    background: grey;
+    background: rgb(233, 196, 30);
 }
 table {
     width: 100%;
     border-collapse: collapse;
 }
 table td{
-    color: white;
     height: 10px;
 }
 .score-correct{
@@ -93,27 +143,48 @@ table td{
 }
 
 /*----FEEDBACK PAGE----*/
+
 #feedback{
+    /* display: none; */
+    background-image: url("https://i.redd.it/6z62cq3f3tm31.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
     /* display: none; */
     height: 100vh;
     position: relative;
+}
+#feedback header {
+   background-image: linear-gradient(to bottom, black, rgb(107, 26, 15));
+   max-width: 760px;
+   height: 100vh;
+   color: lightgray;
 }
 
 #feedback header{
     padding: 0 0 10px 0;
 }
 #feedback .header-img{
-    margin-top: 50px;
-    margin-bottom: 20px;
-    border-radius: 100%;
-    width: 250px;
-    height: 250px;
+    /* background-size: cover; */
+    
+    margin-top: 10px;
+    min-height: 250px;
+    max-width: 740px;
+}
+#next-button{
+    background-color: rgb(233, 196, 30);
+    border: 0px;
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+#next-button:hover{
+    background-color: rgb(243, 139, 20);
 }
 
 /*----RESULTS PAGE----*/
 #results{
      /* display: none; */
-     background-image: url("https://via.placeholder.com/1920x1080/777?text=Placeholder");
+     background-image: url("https://i.redd.it/6z62cq3f3tm31.jpg");
      background-size: cover;
      background-repeat: no-repeat;
      background-position: center;
@@ -122,23 +193,38 @@ table td{
      position: relative;
 }
 #results header {
-    background: white;
+    background-image: linear-gradient(to bottom, black, rgb(107, 26, 15));
     max-width: 760px;
     height: 100vh;
+    color: lightgray;
 }
 #results h3{
     padding-top: 20px;
-    background: lightgray;
+    background: rgb(233, 196, 30);
+    color: black;
     padding-bottom: 20px;
 }
+#results h1 {
+    color: rgb(233, 196, 30);
+    font-size: 60px;
+}
 #results #result-img{
-    background-image: url("https://via.placeholder.com/1920x1080/777?text=Placeholder");
     background-size: cover;
     background-position: center;
     width: 300px;
     height: 300px;
     border-radius: 100%;
     margin: 20px auto;
+    border: 3px solid rgb(233, 196, 30);
+}
+#retry-button{
+    background-color: rgb(233, 196, 30);
+    border: 0px;
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+#retry-button:hover{
+    background-color: rgb(243, 139, 20);
 }
 
 @media screen and (min-width: 740px){
