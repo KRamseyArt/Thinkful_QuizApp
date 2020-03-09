@@ -71,10 +71,11 @@ function manageQuestions(){
         const question = STORE.questions[STORE.currentQuestion];
         
         // track user answer
-        const userAnswer = $('.answer-choices input[name="answer"]:checked').val();
-        console.log(userAnswer);
+        let userAnswer = $("input[name='answer']:checked").val();
+        console.log('User chose: ' + userAnswer);
+        console.log('Correct Answer: ' + question.answers[question.correctAnswer]);
         // compare correct answer vs user answer
-        if (question.correctAnswer == userAnswer){
+        if (userAnswer == question.correctAnswer){
             STORE.score++;
             STORE.answers.push(true);
             displayCorrectFeedback();
@@ -136,31 +137,33 @@ function displayFeedback(){
 function displayCorrectFeedback(){
     $('#feedback .header-img').attr('src', 'https://vignette.wikia.nocookie.net/vsbattles/images/9/90/500px-Egyptian-sun-god-Ra-myth-legend.jpg/revision/latest?cb=20141124003314');
     $('#feedback h1').text('CORRECT!');
-    $('#feedback em').text('May the light of Ra shine upon thee!');
+    $('#feedback em').text('May the light of Ra shine upon you!');
 }
 function displayIncorrectFeedback(){
+    const listOfAnswers = STORE.questions[STORE.currentQuestion].answers;
+    // console.log(listOfAnswers);
+    const correctIndex = STORE.questions[STORE.currentQuestion].correctAnswer;
+    // console.log(correctIndex);
+    // console.log(listOfAnswers[correctIndex]);
+
     $('#feedback .header-img').attr('src', 'https://qph.fs.quoracdn.net/main-qimg-9c57374a41a5bea97ffa23b76d7b91bd');
     $('#feedback h1').text('INCORRECT...');
-    $('#feedback em').text('Anubis is watching you eagerly...The correct answer is ' + STORE.questions[STORE.currentQuestion].correctAnswer);
+    $('#feedback em').text('Anubis is watching you eagerly...The correct answer is ' + listOfAnswers[correctIndex]);
 }
 
 function displayFinalResults(){
     $('#results h3').text('You Answered ' + STORE.score + '/' + STORE.questions.length + ' Questions Correctly!');
 
     let finalScore = (STORE.score/ STORE.questions.length).toFixed(2);
-        //5 / 10 = .5
     $('#results h1').text((finalScore * 100)+ '%')
 
     if (finalScore == 1){
-        console.log(finalScore);
         $('#result-img').css('background-image', 'url("https://lh3.googleusercontent.com/proxy/rLQM0mtlR1wkUu-iVwXhdYhRqqHRbjYLp2iIPTNV75uHWuRpJA0xlJDIgPcC7qPHfO9hLd0gRoRYdTl9ivFUfKX1H4VuuV-vPB6_BV2z7y8akP8frEOHtsSKvJQGwTB-qmx4OuhTeMlovsatWJxw3TvGCQ")');
-        $('#results em').text('Perfect Score!!! Have we found our new Pharaoh!?');
+        $('#results em').text('Perfect Score!!! Have we found our next Pharaoh!?');
     } else if (finalScore >= .5){
-        console.log(finalScore);
         $('#result-img').css("background-image", 'url("https://www.historyonthenet.com/wp-content/uploads/2017/06/Ancient_Aliens_Great_Pyramid_of_Khufu.jpg")');
         $('#results em').text('Great job! Try again to see if you can do better!');
     } else if (finalScore < .5){
-        console.log(finalScore);
         $('#result-img').css("background-image", 'url("https://a.wattpad.com/cover/123307206-288-k900014.jpg")');
         $('#results em').text("You'll be lost to the sands if you don't do better... try again.");
     }
