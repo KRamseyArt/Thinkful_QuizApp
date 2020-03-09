@@ -169,7 +169,7 @@ table td{
 }
 #feedback .header-img{
     /* background-size: cover; */
-    
+    object-position: center 20%;
     margin-top: 10px;
     min-height: 250px;
     max-width: 740px;
