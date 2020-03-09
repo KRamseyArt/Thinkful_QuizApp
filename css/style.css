@@ -105,8 +105,11 @@ form fieldset h2{
     padding: 0 5px;
 }
 .answer-choices label:hover{
-    background: gray;
+    background: rgb(233, 196, 30);
     border-radius: 5px;
+}
+.answer-choices input{
+    margin-right: 10px;
 }
 
 #submit-button{

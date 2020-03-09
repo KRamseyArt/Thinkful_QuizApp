@@ -51,16 +51,17 @@ function loadQuestions(){
     const question = STORE.questions[STORE.currentQuestion];
     $('#question').text(question.title);
 
-    $('#label-0').text(question.answers[0]);
-    $('#label-1').text(question.answers[1]);
-    $('#label-2').text(question.answers[2]);
-    $('#label-3').text(question.answers[3]);
+    $('#label-0').html('<input type="radio" name="answer" id="answer-0" value="0">' + question.answers[0]);
+    $('#label-1').html('<input type="radio" name="answer" id="answer-1" value="1">' + question.answers[1]);
+    $('#label-2').html('<input type="radio" name="answer" id="answer-2" value="2">' + question.answers[2]);
+    $('#label-3').html('<input type="radio" name="answer" id="answer-3" value="3">' + question.answers[3]);
     // change image to correspond to current question
     $('.q-img').attr('src', question['image']);
     // display question number
     $('legend').html('<h2>Question ' + (STORE.currentQuestion + 1) + ' / ' + STORE.questions.length + '</h2>');
 }
 function manageQuestions(){
+    
     $('form').on('submit', e=>{
         e.preventDefault();
         // clear current selection so Question load does not contain users previous answer input
@@ -70,7 +71,7 @@ function manageQuestions(){
         const question = STORE.questions[STORE.currentQuestion];
         
         // track user answer
-        const userAnswer = e.target.answer;
+        const userAnswer = $('.answer-choices input[name="answer"]:checked').val();
         console.log(userAnswer);
         // compare correct answer vs user answer
         if (question.correctAnswer == userAnswer){
@@ -85,6 +86,7 @@ function manageQuestions(){
         render();
     });
 }
+
 
 function manageScore(){
     let numRight = 0;
