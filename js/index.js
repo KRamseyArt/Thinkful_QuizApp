@@ -22,6 +22,48 @@ const STORE = {
             title: 'This god of the desert, storm, and evil controlled all harsh lands outside the Nile Valley:',
             answers: ['Anubis','Osiris','Ra','Set'],
             correctAnswer: 3
+        },
+        {
+            image: 'https://lh5.googleusercontent.com/proxy/WNEIOSyktXGrl1ZQ9UEhhdwzaEXX2WpZLw_t2vInD91xKxeLM5_gpRT5E_8ENFhpq-aa6sDMCBgAuvdmjCIfVbOi3qb1XnIL6KBFDC9Wl0KFRBOjjDCx1AR-TtcRB9ip2bmGUc1lpKtC32lFoU4NkkBxmm-QBsN6pQMJvQ',
+            title: 'This god of air prevents his daughter (the goddess of sky) from visiting her love (the god of earth):',
+            answers: ['Geb','Shu','Nut','Set'],
+            correctAnswer: 1
+        },
+        {
+            image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQL7PPRZnWDTHPGUmWwwwPrnk3f9lnj3gukNAVEqrUXHRQqczdi',
+            title: 'Which god of the sun was the first pharaoh of the world?',
+            answers: ['Ra','Horus','Sobek','Set'],
+            correctAnswer: 0
+        },
+        {
+            image: 'https://cdn.shoplightspeed.com/shops/608314/files/1849091/omen-sitting-anubis-statue-in-black-and-gold-finis.jpg',
+            title: 'This god of funerals helped prepare solus for the afterlife, and escorts them to the Hall of Judgment:',
+            answers: ['Khonsu','Babi','Osiris','Anubis'],
+            correctAnswer: 3
+        },
+        {
+            image: 'https://dlp2gfjvaz867.cloudfront.net/product_photos/18306708/e-215gp-thoth-egyptian-god-o_original.jpg',
+            title: 'This god of writing and wisdom is said to possess knowledge of magic and secrets unknown to other gods:',
+            answers: ['Horus','Bes','Nun','Thoth'],
+            correctAnswer: 3
+        },
+        {
+            image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRsvydn8P3TF6jANxPRUzOwrvtObt_JXDX4GJiAk1NZMzIyge7m',
+            title: 'This bloodthirsty god of the moon is fabled to have feasted on the hearts of other gods:',
+            answers: ['Amon','Set','Khonsu','Anubis'],
+            correctAnswer: 2
+        },
+        {
+            image: 'https://images-na.ssl-images-amazon.com/images/I/41GoqBoTmgL._AC_SY400_.jpg',
+            title: 'Which goddess of truth, justice, and cosmic order holds the balance of the stars and seasons?',
+            answers: ['Tawaret','Maat','Isis','Bastet'],
+            correctAnswer: 1
+        },
+        {
+            image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDUhoqXISm1pAfXnDXmbFsEXyHndIX8K6U6oBQbXbvHO5gp0Dm&s',
+            title: 'This god of the underworld was originally a wise pharaoh who taught mankind about farming:',
+            answers: ['Osiris','Anubis','Ptah','Set'],
+            correctAnswer: 0
         }
     ]
 }
@@ -61,20 +103,21 @@ function loadQuestions(){
     $('legend').html('<h2>Question ' + (STORE.currentQuestion + 1) + ' / ' + STORE.questions.length + '</h2>');
 }
 function manageQuestions(){
+    // On form/answer submission, compare user answer vs correct answer and add result to the score counter.
+    // Alter feedback page to correlate to correct/incorrect input, and then display feedback page
     
     $('form').on('submit', e=>{
         e.preventDefault();
-        // clear current selection so Question load does not contain users previous answer input
-        e.target.reset();
 
-        // show current question
-        const question = STORE.questions[STORE.currentQuestion];
-        
         // track user answer
-        let userAnswer = $("input[name='answer']:checked").val();
-        console.log('User chose: ' + userAnswer);
-        console.log('Correct Answer: ' + question.answers[question.correctAnswer]);
-        // compare correct answer vs user answer
+        let userAnswer = $('input[type="radio"][name="answer"]:checked').val();
+        
+
+        // current question
+        const question = STORE.questions[STORE.currentQuestion];
+        console.log(question.correctAnswer);
+        
+        // compare current question's correct answer vs user answer
         if (userAnswer == question.correctAnswer){
             STORE.score++;
             STORE.answers.push(true);
@@ -83,13 +126,17 @@ function manageQuestions(){
             STORE.answers.push(false);
             displayIncorrectFeedback();
         }
+        // clear current selection so Question load does not contain users previous answer input
+        e.target.reset();
         STORE.page = 'feedback';
         render();
     });
-}
+}    
+
 
 
 function manageScore(){
+    // Track number of right & wrong answers, and adjust Score table properties to visually display right as green/ red as wrong
     let numRight = 0;
     let numWrong = 0;
 
@@ -110,7 +157,7 @@ function manageScore(){
     $('.score p').html(`<span>${numRight} right</span>...<span>${numWrong} wrong</span>`)
 }
 function clearScore(){
-    
+    // Clear Score tracking for use on page reload/ quiz retry
     for (let i = 0; i <= STORE.answers.length; i++){
         $('.score-' + i).removeClass('score-incorrect score-correct').addClass('score-unknown');
     }
@@ -118,6 +165,7 @@ function clearScore(){
 }
 
 function displayFeedback(){
+    // Feedback page core functionality. Increment next question and set up its image. determine whether or not to continue cycling questions or advance to final results screen
     $('#next-button').on('click', e =>{
         STORE.currentQuestion++;
         
