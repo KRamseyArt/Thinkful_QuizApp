@@ -5,6 +5,7 @@ const STORE = {
     score: 0,
     answers: [],
     questions: [
+        // contains all information for questions in this quiz
         {
             image: 'https://cdn.shopify.com/s/files/1/1277/7365/products/Bastet_turn_740x.jpg?v=1561638420',
             title: 'Which protective goddess of cats was often depicted on amulets for good luck?',
@@ -73,14 +74,13 @@ function main(){
     renderIntroPage();
     manageQuestions();
     displayFeedback();
-    // displayFinalResults();
 }
 
 function renderIntroPage(){
-    // clear all pages except intro
+    // clear all page IDs except #intro
+    // when start quiz button clicked, change page to #quiz
     render();
     
-    // when start quiz button clicked, change page to quiz
     $('#start-button').on('click', e =>{
         randomizeArray();
         loadQuestions();
@@ -90,6 +90,7 @@ function renderIntroPage(){
 }
 
 function loadQuestions(){
+    // load question, answers, and image from STOREd list of Questions
     const question = STORE.questions[STORE.currentQuestion];
     $('#question').text(question.title);
 
@@ -97,27 +98,22 @@ function loadQuestions(){
     $('#label-1').html('<input type="radio" name="answer" id="answer-1" value="1">' + question.answers[1]);
     $('#label-2').html('<input type="radio" name="answer" id="answer-2" value="2">' + question.answers[2]);
     $('#label-3').html('<input type="radio" name="answer" id="answer-3" value="3">' + question.answers[3]);
-    // change image to correspond to current question
+    
     $('.q-img').attr('src', question['image']);
     // display question number
     $('legend').html('<h2>Question ' + (STORE.currentQuestion + 1) + ' / ' + STORE.questions.length + '</h2>');
 }
+
 function manageQuestions(){
-    // On form/answer submission, compare user answer vs correct answer and add result to the score counter.
+    // On formsubmission, compare user answer vs correct answer and add result to the score counter.
     // Alter feedback page to correlate to correct/incorrect input, and then display feedback page
-    
     $('form').on('submit', e=>{
         e.preventDefault();
 
-        // track user answer
         let userAnswer = $('input[type="radio"][name="answer"]:checked').val();
         
-
-        // current question
         const question = STORE.questions[STORE.currentQuestion];
-        console.log(question.correctAnswer);
         
-        // compare current question's correct answer vs user answer
         if (userAnswer == question.correctAnswer){
             STORE.score++;
             STORE.answers.push(true);
@@ -126,8 +122,9 @@ function manageQuestions(){
             STORE.answers.push(false);
             displayIncorrectFeedback();
         }
-        // clear current selection so Question load does not contain users previous answer input
+        // clear current selection
         e.target.reset();
+
         STORE.page = 'feedback';
         render();
     });
@@ -136,26 +133,25 @@ function manageQuestions(){
 
 
 function manageScore(){
-    // Track number of right & wrong answers, and adjust Score table properties to visually display right as green/ red as wrong
+    // Control colors and count of Score menu display
     let numRight = 0;
     let numWrong = 0;
 
     for (let i = 0; i <= STORE.answers.length; i++){
         if (STORE.answers[i] == true){
             numRight++;
-            //if answer [] is true, score area should show green
-            $('.score-' + i).removeClass('score-unknown');
-            $('.score-' + i).addClass('score-correct');
+            // if user answered correctly, show green
+            $('.score-' + i).removeClass('score-unknown').addClass('score-correct');
         } else if (STORE.answers[i] == false){
             numWrong++;
-            //if answer index if false, score should show red
-            $('.score-' + i).removeClass('score-unknown');
-            $('.score-' + i).addClass('score-incorrect');
+            // if user answered incorrectly, show red
+            $('.score-' + i).removeClass('score-unknown').addClass('score-incorrect');
         }
     }
 
     $('.score p').html(`<span>${numRight} right</span>...<span>${numWrong} wrong</span>`)
 }
+
 function clearScore(){
     // Clear Score tracking for use on page reload/ quiz retry
     for (let i = 0; i <= STORE.answers.length; i++){
@@ -165,7 +161,7 @@ function clearScore(){
 }
 
 function displayFeedback(){
-    // Feedback page core functionality. Increment next question and set up its image. determine whether or not to continue cycling questions or advance to final results screen
+    // determine whether or not to continue cycling questions or advance to final results screen
     $('#next-button').on('click', e =>{
         STORE.currentQuestion++;
         
@@ -183,16 +179,15 @@ function displayFeedback(){
 }
 
 function displayCorrectFeedback(){
+    // alter feedback screen to reflect correct user answer
     $('#feedback .header-img').attr('src', 'https://vignette.wikia.nocookie.net/vsbattles/images/9/90/500px-Egyptian-sun-god-Ra-myth-legend.jpg/revision/latest?cb=20141124003314');
     $('#feedback h1').text('CORRECT!');
     $('#feedback em').text('May the light of Ra shine upon you!');
 }
 function displayIncorrectFeedback(){
+    // alter feedback screen to reflect incorrect user answer
     const listOfAnswers = STORE.questions[STORE.currentQuestion].answers;
-    // console.log(listOfAnswers);
     const correctIndex = STORE.questions[STORE.currentQuestion].correctAnswer;
-    // console.log(correctIndex);
-    // console.log(listOfAnswers[correctIndex]);
 
     $('#feedback .header-img').attr('src', 'https://qph.fs.quoracdn.net/main-qimg-9c57374a41a5bea97ffa23b76d7b91bd');
     $('#feedback h1').text('INCORRECT...');
@@ -200,6 +195,7 @@ function displayIncorrectFeedback(){
 }
 
 function displayFinalResults(){
+    // calculate final score, display varying text/image based on results
     $('#results h3').text('You Answered ' + STORE.score + '/' + STORE.questions.length + ' Questions Correctly!');
 
     let finalScore = (STORE.score/ STORE.questions.length).toFixed(2);
@@ -226,6 +222,7 @@ function displayFinalResults(){
 }
 
 function randomizeArray(){
+    // randomize the order in which questions are asked
     for (let i = 0; i < STORE.questions.length; i++){
         const randNum = Math.floor(Math.random() * STORE.questions.length);
         const randNum2 = Math.floor(Math.random() * STORE.questions.length);
@@ -238,6 +235,7 @@ function randomizeArray(){
 }
 
 function render(){
+    // hide unnecessary page IDs from window until needed
     $('#intro').hide();
     $('#quiz').hide();
     $('#feedback').hide();
