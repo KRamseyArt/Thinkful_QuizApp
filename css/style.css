@@ -243,3 +243,12 @@ table td{
         margin-right: 0;
     }
 }
+
+@media screen and (max-height: 780px){
+    .header-img{
+        display: none;
+    }
+    .q-img{
+        display: none;
+    }
+}
