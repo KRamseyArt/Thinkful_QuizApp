@@ -202,7 +202,7 @@ function displayFinalResults(){
     $('#results h1').text((finalScore * 100)+ '%')
 
     if (finalScore == 1){
-        $('#result-img').css('background-image', 'url("https://lh3.googleusercontent.com/proxy/rLQM0mtlR1wkUu-iVwXhdYhRqqHRbjYLp2iIPTNV75uHWuRpJA0xlJDIgPcC7qPHfO9hLd0gRoRYdTl9ivFUfKX1H4VuuV-vPB6_BV2z7y8akP8frEOHtsSKvJQGwTB-qmx4OuhTeMlovsatWJxw3TvGCQ")');
+        $('#result-img').css('background-image', 'url("https://2.bp.blogspot.com/-qWI0lQ2rlNg/TnkFR5tIFfI/AAAAAAAAAKQ/k9XkKoVirds/s1600/sarcophL0411_468x1385.jpg")');
         $('#results em').text('Perfect Score!!! Have we found our next Pharaoh!?');
     } else if (finalScore >= .5){
         $('#result-img').css("background-image", 'url("https://www.historyonthenet.com/wp-content/uploads/2017/06/Ancient_Aliens_Great_Pyramid_of_Khufu.jpg")');
