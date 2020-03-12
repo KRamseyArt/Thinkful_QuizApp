@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Egyptian Deities Quiz</title>
         <link rel="stylesheet" type="" href="css/style.css">
     </head>
@@ -19,7 +20,7 @@
         <!--QUIZ PAGE-->
         <section id="quiz">
             <header>
-                <img class="header-img" src="https://i.redd.it/6z62cq3f3tm31.jpg" alt="header-image">
+                <img class="header-img" src="https://i.redd.it/6z62cq3f3tm31.jpg" alt="header image featuring ancient Egyptian heiroglyphs">
                 <h1>Egyptian Deities Quiz</h1>
                 <p><em>Test your knowledge of ancient Egyptian Gods!</em></p>
             </header>
@@ -35,10 +36,18 @@
                     <p id="question">Which protective goddess of cats was often depicted on amulets for good luck?</p>
                     
                     <section class="answer-choices">
-                        <label for="answer-0" id="label-0"></label><br>
-                        <label for="answer-1" id="label-1"></label><br>
-                        <label for="answer-2" id="label-2"></label><br>
-                        <label for="answer-3" id="label-3"></label>
+                        
+                            <input type="radio" name="answer" id="answer-0" value="0">
+                            <label for="answer-0" id="label-0"></label><br>
+                        
+                            <input type="radio" name="answer" id="answer-1" value="1">
+                            <label for="answer-1" id="label-1"></label><br>
+                        
+                            <input type="radio" name="answer" id="answer-2" value="2">
+                            <label for="answer-2" id="label-2"></label><br>
+                        
+                            <input type="radio" name="answer" id="answer-3" value="3">
+                            <label for="answer-3" id="label-3"></label><br>
                     </section>
                 </fieldset>
                 <br>
@@ -69,7 +78,7 @@
         <!--FEEDBACK PAGE-->
         <section id="feedback">
             <header>
-                <img class="header-img" src="https://via.placeholder.com/500x500/555?text=Placeholder+Image" alt="feedback-image">
+                <img class="header-img" src="https://via.placeholder.com/500x500/555?text=Placeholder+Image">
                 <!--Upon submitting an answer, users should:
                         - receive textual feedback about their answer. If they were incorrect, they should be told the correct answer
                         - Be moved onto the next question [or interact with an element to move on]-->
@@ -104,7 +113,7 @@
             <header>
                 <!--Users should be shown their overall score at the end of the quiz [how many questions they got right out of the total questions asked]-->
                 <h3>You Answered 5/10 Questions Correctly!</h3>
-                <div id="result-img"></div>
+                <img id="result-img" src="https://via.placeholder.com/500x500/555?text=Placeholder+Image">
                 <h1>50%</h1>
                 <p><em></em></p>
                 <br>
